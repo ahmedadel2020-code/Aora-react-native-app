@@ -1,26 +1,21 @@
-import {
-  View,
-  Text,
-  FlatList,
-  Image,
-  RefreshControl,
-  Alert,
-} from "react-native";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import { FlatList, Image, RefreshControl, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import { images } from "../../constants";
+import EmptyState from "../../components/EmptyState";
 import SearchInput from "../../components/SearchInput";
 import Trending from "../../components/Trending";
-import EmptyState from "../../components/EmptyState";
+import VideoCard from "../../components/VideoCard";
+import { images } from "../../constants";
 import { getAllPosts, getLatestPosts } from "../../lib/appwrite";
 import useAppwrite from "../../lib/useAppwrite";
-import VideoCard from "../../components/VideoCard";
+import { useGlobalContext } from "../../context/GlobalProvider";
 
 const Home = () => {
   const { data: posts, refetch } = useAppwrite(getAllPosts);
   const { data: latestPosts } = useAppwrite(getLatestPosts);
   const [refreshing, setRefreshing] = useState(false);
+  const { user, setUser, setIsLoggedIn } = useGlobalContext();
 
   const onRefresh = async () => {
     setRefreshing(true);
@@ -38,10 +33,10 @@ const Home = () => {
             <View className="justify-between items-start flex-row mb-6">
               <View>
                 <Text className="font-pmedium text-gray-100 text-sm">
-                  Welcome Back
+                  Welcome Back,
                 </Text>
                 <Text className="font-2xl font-psemibold text-white">
-                  Ahmed Adel
+                  {user?.username}
                 </Text>
               </View>
               <View className="mt-1.5">

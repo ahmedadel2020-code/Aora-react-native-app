@@ -1,7 +1,6 @@
-import { StyleSheet, Text, View } from "react-native";
-import React, { useEffect } from "react";
-import { Slot, SplashScreen, Stack } from "expo-router";
 import { useFonts } from "expo-font";
+import { SplashScreen, Stack } from "expo-router";
+import React, { useEffect } from "react";
 import GlobalProvider from "../context/GlobalProvider";
 
 SplashScreen.preventAutoHideAsync();
@@ -53,12 +52,12 @@ const RootLayout = () => {
             headerShown: false,
           }}
         />
-        {/* <Stack.Screen
-        name="/search/[query]"
-        options={{
-          headerShown: false,
-        }}
-      /> */}
+        <Stack.Screen
+          name="search/[query]"
+          options={{
+            headerShown: false,
+          }}
+        />
       </Stack>
     </GlobalProvider>
   );
