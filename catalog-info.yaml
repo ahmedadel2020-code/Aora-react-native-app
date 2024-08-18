@@ -1,0 +1,10 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: Aora-react-native-app
+  annotations:
+    github.com/project-slug: ahmedadel2020-code/Aora-react-native-app
+spec:
+  type: other
+  lifecycle: unknown
+  owner: gcp
